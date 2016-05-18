@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  #
+   root 'suggestions#index'
+   post 'new' => 'suggestions#find_pairing'
+   get "/auth/:provider/callback" => "sessions#create"
 
-  root 'suggestions#index'
 
-
-  get '/sign_in'   => 'sessions#new'
-  post '/sign_out' => 'sessions#create'
-  get '/sign_out'  => 'sessions#destroy'
+  # get '/sign_in'   => 'sessions#new'
+  # post '/sign_out' => 'sessions#create'
+  # get '/sign_out'  => 'sessions#destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
