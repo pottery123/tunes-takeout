@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   #
-   root 'suggestions#index'
-   post 'new' => 'suggestions#find_pairing'
+   root "suggestions#index"
+   post "suggestions/find_pairing" => "suggestions#find_pairing"
    get "/auth/:provider/callback" => "sessions#create"
 
+   post "suggestions/search_favorites" => "suggestions#search_favorites"
 
   # get '/sign_in'   => 'sessions#new'
   # post '/sign_out' => 'sessions#create'

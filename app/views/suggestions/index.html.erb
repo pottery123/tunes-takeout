@@ -1,7 +1,17 @@
 <h1>Search for parings</h1>
 
-<%= form_tag({controller: "suggestions", action: "find_pairing"}, method: "post") do %>
+<%= form_tag("/suggestions/find_pairing",  method: :post) do %>
     <%= label_tag(:food_search, "Search for:") %>
     <%= text_field_tag(:food_search) %>
     <%= submit_tag("Search") %>
-<% end %> 
+<% end %>
+
+
+<% if !@a.nil?%>
+<%@a.suggestions.each do |suggestion|%>
+<%=suggestion%>
+  <%end%>
+<%end%>
+
+
+<h2> see top favorites</h2>
