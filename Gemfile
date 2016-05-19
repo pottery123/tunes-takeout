@@ -6,6 +6,7 @@ gem 'yelp'
 gem 'rspotify'
 gem 'rest-client'
 gem "omniauth"
+gem "addressable"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

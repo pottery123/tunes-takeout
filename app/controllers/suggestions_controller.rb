@@ -39,7 +39,7 @@ class SuggestionsController < ApplicationController
           @artist = Music.find_artist(suggestion["music_id"])
         @music_array <<  @artist
         end
-        return @music_array
+        #return @music_array
       end
 
 
@@ -51,11 +51,12 @@ class SuggestionsController < ApplicationController
 
       food_search = params[:food_search]
       @food_array = []
-      @b= TunesTakeOut.new.find_business(food_search)
+      @b = TunesTakeOut.new.search_businesses(food_search)
       @b.each do |business|
-        business = business["food_id"]
+        business = Food.find_business(business["food_id"])
         @food_array << business
       end
+      return @food
       #render :index
     end
 
@@ -80,3 +81,15 @@ class SuggestionsController < ApplicationController
 
 end
 #controller controls what you and see only here
+
+=begin
+<#% if ! @music.nil?%>
+<#%  @music.each do |suggestion|%>
+<#%=suggestion.name%><br>
+<#%=link_to(suggestion.external_urls)%><br>
+
+
+<#iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion.uri}" %>"width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+  <#%end%>
+<#%end%>
+=end

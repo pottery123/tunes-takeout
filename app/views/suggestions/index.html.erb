@@ -7,16 +7,35 @@
 <% end %>
 
 
-<% if ! @music.nil?%>
-<%  @music.each do |suggestion|%>
-<%=suggestion.name%><br>
-<%=link_to(suggestion.external_urls)%><br>
 
 
-<iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion.uri}" %>"
+
+
+<%@music_array.zip(@food_array).each do |suggestion|%>
+<%=suggestion[0].name%><br>
+<iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion[0].uri}" %>"
 width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-  <%end%>
+
+
+
+
+
+
+<%=suggestion[1].name%><br>
+<%=image_tag(suggestion[1].image)%><br>
+<%=suggestion[1].rating%><br>
+<%=suggestion[1].reviews%><br>
+<%=suggestion[1].rating_image%><br>
+<%=suggestion[1].address%><br>
+
 <%end%>
+
+
+
+
+
+
+
 
 
 
