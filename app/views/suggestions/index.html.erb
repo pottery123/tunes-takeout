@@ -8,10 +8,16 @@
 
 
 <% if !@a.nil?%>
-<%@a.suggestions.each do |suggestion|%>
-<%=suggestion%>
+<%@a.each do |suggestion|%>
+<%#=suggestion["images"]%>
+<%=suggestion["music_id"]%>
+<%binding.pry%>
   <%end%>
 <%end%>
 
 
 <h2> see top favorites</h2>
+
+<%=link_to "favorites",favorites_path%>
+
+#What I need to do is git the music id

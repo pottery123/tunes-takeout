@@ -3,13 +3,8 @@ require 'httparty'
 
 class TunesTakeOut
   BASE_URL = "https://tunes-takeout-api.herokuapp.com/"
-  attr_reader :suggestions
-
-  def initialize(food_term)
-    @suggestions = search_pairing(food_term)
 
 
-  end
 
     def search_pairing(keyword)#call from a controller
       #gets paring from a key word.
@@ -18,14 +13,11 @@ class TunesTakeOut
 
     end
 
+
     def search_favorites
-      @show_favorites = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=20").parsed_response
-      @show_favorites
+      HTTParty.get(BASE_URL + "v1/suggestions/top?limit=20").parsed_response
+
     end
 
 
-
 end
-
-
-#Ill want to initialize somthing here

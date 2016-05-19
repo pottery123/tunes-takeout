@@ -20,6 +20,11 @@
       <li><%= link_to "Log Out", logout_path, method: :delete if current_user%></li>
     </ul>
   </nav>
+
+  <p>
+    <%= flash[:error]%>
+      <%=flash[:notice]%>
+  </p>
   <%= yield %>
 </main>
 </body>

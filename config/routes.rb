@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    post "suggestions/find_pairing" => "suggestions#find_pairing"
    get "/auth/:provider/callback" => "sessions#create"
 
-   post "suggestions/search_favorites" => "suggestions#search_favorites"
+   get "/suggestions/search_favorites" => "suggestions#search_favorites", as: :favorites
 
   # get '/sign_in'   => 'sessions#new'
   # post '/sign_out' => 'sessions#create'

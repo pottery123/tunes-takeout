@@ -2,10 +2,11 @@ require 'tunestakeout.rb'
 class SuggestionsController < ApplicationController
 
 
-  skip_before_action :require_login, only: [:index ,:find_pairing]
+  skip_before_action :require_login, only: [:index ,:find_pairing,:search_favorites]
 
 
   def index
+
 
   end
 
@@ -13,21 +14,43 @@ class SuggestionsController < ApplicationController
 
     def find_pairing
 
+      # stage 1
       food_search = params[:food_search]
-      #TunesTakeOut.new.suggestions(food_search)
     # binding.pry look to see what is going on in the server
-      @a = TunesTakeOut.new(food_search)
+
+      #stage 2
+      #loop  thorugh @a and put then in the find artist variable
+      #find artist with id
+      #music = Music.find_artist(@a["music_id"])
+
+      @a = TunesTakeOut.new.search_pairing(food_search)
+      @a.each do |suggestion|
+        music =  suggestion["music_type"]
+        if music == "album"
+
+          Music.find_album(suggestion["music_id"])
+        elsif music == "track"
+          Music.find_track(suggestion["music_id"])
+        else
+          Music.find_artist(suggestion["music_id"])
+
+        end
+      end
+
+
+      #stage 3
       render :index
     end
 
 
-    def show_favorites
-    
-      @show_favorites
-
+    def search_favorites
+     @show_favorites = TunesTakeOut.new.search_favorites
+    render :favorites
     end
+
 
 
 
 
 end
+#controller controls what you and see only here
