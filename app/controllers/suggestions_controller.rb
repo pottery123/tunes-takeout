@@ -22,18 +22,22 @@ class SuggestionsController < ApplicationController
       #loop  thorugh @a and put then in the find artist variable
       #find artist with id
       #music = Music.find_artist(@a["music_id"])
+      @music_array = []
 
       @a = TunesTakeOut.new.search_pairing(food_search)
       @a.each do |suggestion|
         music =  suggestion["music_type"]
         if music == "album"
 
-          Music.find_album(suggestion["music_id"])
-        elsif music == "track"
-          Music.find_track(suggestion["music_id"])
-        else
-          Music.find_artist(suggestion["music_id"])
+        @album =   Music.find_album(suggestion["music_id"])
+        @music_array <<  @album
 
+        elsif music == "track"
+          @track = Music.find_track(suggestion["music_id"])
+        @music_array <<  @track
+        elsif music == "artist"
+          @artist = Music.find_artist(suggestion["music_id"])
+        @music_array <<  @artist
         end
       end
 

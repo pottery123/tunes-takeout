@@ -7,17 +7,20 @@
 <% end %>
 
 
-<% if !@a.nil?%>
-<%@a.each do |suggestion|%>
-<%#=suggestion["images"]%>
-<%=suggestion["music_id"]%>
-<%binding.pry%>
+<% if ! @music_array.nil?%>
+<%  @music_array.each do |suggestion|%>
+<%=suggestion.name%><br>
+<%=link_to(suggestion.external_urls)%><br>
+
+<iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion.uri}" %>"
+width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
   <%end%>
 <%end%>
+
+
+
 
 
 <h2> see top favorites</h2>
 
 <%=link_to "favorites",favorites_path%>
-
-#What I need to do is git the music id

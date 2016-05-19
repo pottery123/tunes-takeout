@@ -13,8 +13,8 @@ class Music
 
 
     artist = @artist = RSpotify::Artist.find(artist_id)
-    self.new(artist)#show music object in view
-
+    #@artist = self.new(artist)#show music object in view
+    artist
 
 
 
@@ -22,13 +22,13 @@ class Music
 
   def self.find_album(album_id)
     album = @albums= RSpotify::Album.find(album_id)
-    self.new(album)
+    album #@album = self.new(album)
 
   end
 
   def self.find_track(track_id)
     track =   @track= RSpotify::Track.find(track_id)
-    self.new(track)
+    track #@track = self.new(track)
 
   end
 
