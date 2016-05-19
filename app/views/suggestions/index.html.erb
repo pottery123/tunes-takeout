@@ -1,21 +1,24 @@
 <h1>Search for parings</h1>
 
-<%= form_tag("/suggestions/find_pairing",  method: :post) do %>
+<%= form_tag("/suggestions/combination", method: :post) do %>
     <%= label_tag(:food_search, "Search for:") %>
     <%= text_field_tag(:food_search) %>
     <%= submit_tag("Search") %>
 <% end %>
 
 
-<% if ! @music_array.nil?%>
-<%  @music_array.each do |suggestion|%>
+<% if ! @music.nil?%>
+<%  @music.each do |suggestion|%>
 <%=suggestion.name%><br>
 <%=link_to(suggestion.external_urls)%><br>
+
 
 <iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion.uri}" %>"
 width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
   <%end%>
 <%end%>
+
+
 
 
 

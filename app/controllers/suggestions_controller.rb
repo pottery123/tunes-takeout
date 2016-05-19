@@ -2,7 +2,7 @@ require 'tunestakeout.rb'
 class SuggestionsController < ApplicationController
 
 
-  skip_before_action :require_login, only: [:index ,:find_pairing,:search_favorites]
+  skip_before_action :require_login, only: [:index ,:combination, :search_favorites]
 
 
   def index
@@ -39,11 +39,33 @@ class SuggestionsController < ApplicationController
           @artist = Music.find_artist(suggestion["music_id"])
         @music_array <<  @artist
         end
+        return @music_array
       end
 
 
       #stage 3
+      #render :index
+    end
+
+    def business_paring
+
+      food_search = params[:food_search]
+      @food_array = []
+      @b= TunesTakeOut.new.find_business(food_search)
+      @b.each do |business|
+        business = business["food_id"]
+        @food_array << business
+      end
+      #render :index
+    end
+
+    def combination
+
+      @music = find_pairing
+      @business = business_paring
+
       render :index
+
     end
 
 
