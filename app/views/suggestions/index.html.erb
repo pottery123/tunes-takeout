@@ -6,14 +6,14 @@
     <%= submit_tag("Search") %>
 <% end %>
 
-<%=current_user.name%>
+<%#=current_user.uid%>
 
 
 
 
 <%if current_user && @music_array && @food_array %>
 
-  <%@music_array.zip(@food_array).each do |suggestion|%>
+  <%@music_array.zip(@food_array,@id_array).each do |suggestion|%>
     <%=suggestion[0].name%><br>
     <iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion[0].uri}" %>"
     width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
@@ -29,6 +29,11 @@
     <%=suggestion[1].reviews%><br>
     <%=suggestion[1].rating_image%><br>
     <%=suggestion[1].address%><br>
+    <%= form_tag("/favorites/favorite_a_suggestion", method: :post) do %>
+        <%=hidden_field_tag(:user_id => current_user.uid)%>
+        <%hidden_field_tag(:suggestion_id => suggestion[2] )%>
+        <%= submit_tag("Search") %>
+      <%end%>
   <%end%>
 <%end%>
 

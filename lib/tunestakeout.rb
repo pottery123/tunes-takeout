@@ -24,5 +24,22 @@ class TunesTakeOut
       data["suggestions"]
     end
 
+    # def search_single_pairing_ID(id)
+    #   #id should be passed from params
+    #   data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
+    #   data["suggestions"]["id"]
+    #
+    # end
+
+
+    def favorite_a_suggestion(user_id,suggestion_id)
+        body = {"suggestion": suggestion_id}.to_json
+       response = HTTParty.post(BASE_URL + "v1/users/#{user_id}/favorites", body: body)
+       response.code
+    end
+
+    def unfavorite_a_suggestion(user_id,suggestion_id)
+      HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: {"suggestion": "suggestion-id"}).to_json
+    end
 
 end

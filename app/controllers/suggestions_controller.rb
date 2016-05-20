@@ -38,7 +38,7 @@ class SuggestionsController < ApplicationController
           @artist = Music.find_artist(suggestion["music_id"])
         @music_array <<  @artist
         end
-        #return @music_array
+        #return @ with suggestion id music_array
       end
 
 
@@ -57,6 +57,16 @@ class SuggestionsController < ApplicationController
       end
       return @food
       #render :index
+    end
+
+    def suggestion_id
+      food_search = params[:food_search]
+      @id_array = []
+      @c = TunesTakeOut.new.search_businesses(food_search)
+      @c
+      id =  suggestion["id"]
+
+
     end
 
     def combination
