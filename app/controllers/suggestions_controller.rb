@@ -2,11 +2,10 @@ require 'tunestakeout.rb'
 class SuggestionsController < ApplicationController
 
 
-  skip_before_action :require_login, only: [:index ,:combination, :search_favorites]
+  skip_before_action :require_login, only: [:index]
 
 
   def index
-
 
   end
 

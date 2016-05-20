@@ -3,6 +3,7 @@ Rails.application.routes.draw do
    root "suggestions#index"
    post "suggestions/combination" => "suggestions#combination"
    get "/auth/:provider/callback" => "sessions#create"
+   delete "/logout" => "sessions#destroy"
 
    get "/suggestions/search_favorites" => "suggestions#search_favorites", as: :favorites
    #post "suggestions/business_paring" => "suggestions#business_paring"
