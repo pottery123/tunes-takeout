@@ -30,9 +30,9 @@
     <%=suggestion[1].rating_image%><br>
     <%=suggestion[1].address%><br>
     <%= form_tag("/favorites/favorite_a_suggestion", method: :post) do %>
-        <%=hidden_field_tag(:user_id => current_user.uid)%>
-        <%hidden_field_tag(:suggestion_id => suggestion[2] )%>
-        <%= submit_tag("Search") %>
+        <%=hidden_field_tag(:user_id, current_user.uid)%>
+        <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
+        <%= submit_tag("Fav") %>
       <%end%>
   <%end%>
 <%end%>

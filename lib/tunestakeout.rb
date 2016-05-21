@@ -13,6 +13,13 @@ class TunesTakeOut
 
     end
 
+    def search_id(keyword)
+      data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
+       data["suggestions"]
+
+
+    end
+
 
     def search_favorites
       HTTParty.get(BASE_URL + "v1/suggestions/top?limit=20").parsed_response
@@ -39,7 +46,7 @@ class TunesTakeOut
     end
 
     def unfavorite_a_suggestion(user_id,suggestion_id)
-      HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: {"suggestion": "suggestion-id"}).to_json
+      HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: {"suggestion": "suggestion_id"}).to_json
     end
 
 end

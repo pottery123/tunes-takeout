@@ -55,24 +55,28 @@ class SuggestionsController < ApplicationController
         business = Food.find_business(business["food_id"])
         @food_array << business
       end
-      return @food
+      return @food_array
       #render :index
     end
 
     def suggestion_id
       food_search = params[:food_search]
       @id_array = []
-      @c = TunesTakeOut.new.search_businesses(food_search)
-      @c
-      id =  suggestion["id"]
+      @c = TunesTakeOut.new.search_id(food_search)
+      @c.each do |suggestion|
 
+        id = suggestion["id"]
+      @id_array << id
 
+      end
+      return @id_array
     end
 
     def combination
 
       @music = find_pairing
       @business = business_paring
+      @id = suggestion_id
 
       render :index
 

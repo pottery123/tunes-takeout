@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
     if favorite == 201
       @message = "Good!"
     else
-    @message = "Not so good"
+    @message = "Not so good :("
     end
     @print_status = favorite
     render :favorite
