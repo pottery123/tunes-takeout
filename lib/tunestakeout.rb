@@ -22,8 +22,8 @@ class TunesTakeOut
 
 
     def search_favorites
-      HTTParty.get(BASE_URL + "v1/suggestions/top?limit=20").parsed_response
-
+      data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=5").parsed_response
+      data["suggestions"]
     end
 
     def search_businesses(keyword)
