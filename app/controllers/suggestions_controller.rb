@@ -85,6 +85,7 @@ class SuggestionsController < ApplicationController
 
     def search_favorites
      @show_favorites = TunesTakeOut.new.search_favorites
+     @show_favorites["suggestions"]
     render :favorites
     end
 
