@@ -33,7 +33,16 @@
         <%=hidden_field_tag(:user_id, current_user.uid)%>
         <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
         <%= submit_tag("Fav") %>
-      <%end%>
+
+
+
+
+        <%= form_tag("/favorites/unfavorite", method: :delete) do %>
+            <%=hidden_field_tag(:user_id, current_user.uid)%>
+            <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
+            <%= submit_tag("UnFav") %>
+            <%end%>
+        <%end%>
   <%end%>
 <%end%>
 

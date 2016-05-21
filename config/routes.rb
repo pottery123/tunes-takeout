@@ -3,10 +3,10 @@ Rails.application.routes.draw do
    root "suggestions#index"
    post "suggestions/combination" => "suggestions#combination"
    post "/favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
-   get "favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion", as: :favorite_a_paring
+   delete "favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion", as: :favorite_a_paring
    get "/auth/:provider/callback" => "sessions#create"
    delete "/logout" => "sessions#destroy"
-
+  # delete "/favorites/unfavorite" => "favorite#unfavorite"
    get "/suggestions/search_favorites" => "suggestions#search_favorites", as: :favorites
    #post "suggestions/business_paring" => "suggestions#business_paring"
   # get '/sign_in'   => 'sessions#new'

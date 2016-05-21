@@ -15,6 +15,18 @@ class FavoritesController < ApplicationController
   end
 
 
+  def unfavorite
+    unfavorite = TunesTakeOut.new.unfavorite_a_suggestion(session[:user_id],params[:suggestion_id])
+    if unfavorite == 201
+      @message = "Good!"
+    else
+      @message = "Not so good :("
+    end
+    @print_status = unfavorite
+    render :favorite
+  end
+
+
 
 
 end

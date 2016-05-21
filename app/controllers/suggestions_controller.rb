@@ -12,15 +12,7 @@ class SuggestionsController < ApplicationController
 
 
     def find_pairing
-
-      # stage 1
       food_search = params[:food_search]
-    # binding.pry look to see what is going on in the server
-
-      #stage 2
-      #loop  thorugh @a and put then in the find artist variable
-      #find artist with id
-      #music = Music.find_artist(@a["music_id"])
       @music_array = []
 
       @a = TunesTakeOut.new.search_pairing(food_search)
@@ -41,9 +33,6 @@ class SuggestionsController < ApplicationController
         #return @ with suggestion id music_array
       end
 
-
-      #stage 3
-      #render :index
     end
 
     def business_paring
@@ -56,7 +45,6 @@ class SuggestionsController < ApplicationController
         @food_array << business
       end
       return @food_array
-      #render :index
     end
 
     def suggestion_id
@@ -85,26 +73,48 @@ class SuggestionsController < ApplicationController
 
     def search_favorites
       @show_favorites_array = []
-     @show_favorites = TunesTakeOut.new.search_favorites
-     @show_favorites.each do |id|
-       @data_id = TunesTakeOut.new.favorites_by_id(id)
-       @show_favorites_array << @data_id
-     end
-    render :favorites
+      @show_favorites = TunesTakeOut.new.search_favorites
+      @show_favorites.each do |id|
+        @data_id = TunesTakeOut.new.favorites_by_id(id)
+        @show_favorites_array << @data_id
+        @show_favorites_array
+        end
+        render :favorites
     end
 
-    def show_favorites_suggestions_controller
+    def display_music
+      @music_array = []
+      @show_favorites_array.each do |suggestion|
+        music = suggestion["muisc_type"]
+        if music == "album"
+          @album =   Music.find_album(suggestion["music_id"])
+          @music_array <<  @album
+        elsif  music == "track"
+          @track = Music.find_track(suggestion["music_id"])
+          @music_array <<  @track
+        elsif music == "artist"
+          @artist = Music.find_artist(suggestion["music_id"])
+          @music_array <<  @artist
+        end
 
+        #return @ with suggestion id music_array
+      end
+      render :favorites
     end
-
-
-
 end
 
 
 
 
 #controller controls what you and see only here
+# def show_favorites_suggestions_controller
+#   @show_favorites_array.each do |suggestion|
+#     music = suggestion["suggestion"]
+#       if music == ""
+#
+#
+#
+# end
 
 =begin
 

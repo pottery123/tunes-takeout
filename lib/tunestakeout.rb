@@ -22,7 +22,7 @@ class TunesTakeOut
 
 
     def search_favorites #this is where array is take out
-      data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=5").parsed_response
+      data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=3").parsed_response
       data["suggestions"]
     end
 
@@ -52,7 +52,9 @@ class TunesTakeOut
     end
 
     def unfavorite_a_suggestion(user_id,suggestion_id)
-      HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: {"suggestion": "suggestion_id"}).to_json
+      response.code = HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: {"suggestion": "suggestion_id"}.to_json)
+      responce.code
     end
+
 
 end
