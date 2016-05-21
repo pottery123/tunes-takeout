@@ -21,7 +21,7 @@ class TunesTakeOut
     end
 
 
-    def search_favorites
+    def search_favorites #this is where array is take out
       data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=5").parsed_response
       data["suggestions"]
     end
@@ -29,6 +29,12 @@ class TunesTakeOut
     def search_businesses(keyword)
       data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
       data["suggestions"]
+    end
+
+
+    def favorites_by_id(id)
+      data = HTTParty.get(BASE_URL + "/v1/suggestions/#{id}").parsed_response
+      data
     end
 
     # def search_single_pairing_ID(id)

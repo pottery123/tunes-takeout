@@ -84,18 +84,38 @@ class SuggestionsController < ApplicationController
 
 
     def search_favorites
+      @show_favorites_array = []
      @show_favorites = TunesTakeOut.new.search_favorites
+     @show_favorites.each do |id|
+       @data_id = TunesTakeOut.new.favorites_by_id(id)
+       @show_favorites_array << @data_id
+     end
     render :favorites
+    end
+
+    def show_favorites_suggestions_controller
+
     end
 
 
 
-
-
 end
+
+
+
+
 #controller controls what you and see only here
 
 =begin
+
+
+def search_favorites
+ @show_favorites = TunesTakeOut.new.search_favorites
+render :favorites
+end
+
+
+
 <#% if ! @music.nil?%>
 <#%  @music.each do |suggestion|%>
 <#%=suggestion.name%><br>
