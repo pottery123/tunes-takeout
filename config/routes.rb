@@ -2,16 +2,20 @@ Rails.application.routes.draw do
   #
    root "suggestions#index"
    post "suggestions/combination" => "suggestions#combination"
+
    post "/favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
-   delete "favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion", as: :favorite_a_paring
+   delete "favorites/destroy" => "favorites#destroy"
+
+   delete "favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
+
+
    get "/auth/:provider/callback" => "sessions#create"
    delete "/logout" => "sessions#destroy"
   # delete "/favorites/unfavorite" => "favorite#unfavorite"
    get "/suggestions/search_favorites" => "suggestions#search_favorites", as: :favorites
    #post "suggestions/business_paring" => "suggestions#business_paring"
-  # get '/sign_in'   => 'sessions#new'
-  # post '/sign_out' => 'sessions#create'
-  # get '/sign_out'  => 'sessions#destroy'
+
+   get "suggestions/food_music" => "suggestions#food_music", as: :list_favs
 
 
   # The priority is based upon order of creation: first created -> highest priority.

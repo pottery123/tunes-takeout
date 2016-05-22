@@ -1,7 +1,14 @@
 <h2> see top favorites</h2>
 
 <% if !@show_favorites_array.nil?%>
-<%@show_favorites_array.each do |favorite|%>
-<%=favorite%>
-  <%end%>
+  <%@show_favorites_array.each do |num|%>
+    <%=num.name%><br>
+    <iframe src="https://embed.spotify.com/?uri=<%=  "#{num.uri}" %>"
+    width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+      <%end%>
 <%end%>
+
+  <%=@food_array.each do |num|%>
+    <%=num.name%><br>
+    <%end%>

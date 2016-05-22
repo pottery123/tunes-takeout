@@ -28,7 +28,7 @@ class TunesTakeOut
 
     def search_businesses(keyword)
       data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
-      data["suggestions"]
+      data
     end
 
 

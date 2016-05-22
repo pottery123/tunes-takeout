@@ -72,34 +72,50 @@ class SuggestionsController < ApplicationController
 
 
     def search_favorites
+      @food_array = []
       @show_favorites_array = []
       @show_favorites = TunesTakeOut.new.search_favorites
       @show_favorites.each do |id|
-        @data_id = TunesTakeOut.new.favorites_by_id(id)
-        @show_favorites_array << @data_id
+        a = TunesTakeOut.new.favorites_by_id(id)["suggestion"]
+        if a["music_type"] == "artist"
+          @artist = Music.find_artist(a["music_id"])
+          @show_favorites_array << @artist
+        elsif a["music_type"] == "album"
+          @album = Music.find_album(a["music_id"])
+          @show_favorites_array << @album
+        else a["music_type"] == "track"
+          @track = Music.find_track(a["music_id"])
+          @show_favorites_array << @track
+            @show_food_favorites = TunesTakeOut.new.search_favorites
+            @show_food_favorites.each do |id|
+              b = TunesTakeOut.new.favorites_by_id(id)["suggestion"]
+              @food = Food.find_business(b["food_id"])
+              @food_array << @food
+          end
+
+        end
+        @food_array
         @show_favorites_array
-        end
-        render :favorites
-    end
-
-    def display_music
-      @music_array = []
-      @show_favorites_array.each do |suggestion|
-        music = suggestion["muisc_type"]
-        if music == "album"
-          @album =   Music.find_album(suggestion["music_id"])
-          @music_array <<  @album
-        elsif  music == "track"
-          @track = Music.find_track(suggestion["music_id"])
-          @music_array <<  @track
-        elsif music == "artist"
-          @artist = Music.find_artist(suggestion["music_id"])
-          @music_array <<  @artist
-        end
-
-        #return @ with suggestion id music_array
       end
       render :favorites
+    end
+
+
+    def display_food
+
+      @food_array = []
+      @show_favorites_array.each do |suggestion|
+        suggestion = Food.find_business(suggestion["food_id"])
+        @food_array << suggestion
+      end
+      return @food_array
+    end
+
+
+    def food_music
+      @display_food = display_food
+      @display_music = dispaly_music
+
     end
 end
 
