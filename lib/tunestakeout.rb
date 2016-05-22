@@ -28,7 +28,7 @@ class TunesTakeOut
 
     def search_businesses(keyword)
       data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
-      data
+      data["suggestions"]
     end
 
 
@@ -37,12 +37,11 @@ class TunesTakeOut
       data
     end
 
-    # def search_single_pairing_ID(id)
-    #   #id should be passed from params
-    #   data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
-    #   data["suggestions"]["id"]
-    #
-    # end
+    def my_favorites(user_id)
+      data = HTTParty.get(BASE_URL + "v1/users/#{user_id}/favorites").parsed_response
+      data["suggestions"]
+    end
+
 
 
     def favorite_a_suggestion(user_id,suggestion_id)
@@ -52,8 +51,9 @@ class TunesTakeOut
     end
 
     def unfavorite_a_suggestion(user_id,suggestion_id)
-      response.code = HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: {"suggestion": "suggestion_id"}.to_json)
-      responce.code
+      body = {"suggestion": suggestion_id}.to_json
+      response = HTTParty.delete(BASE_URL + "v1/users/#{user_id}/favorites", body: body)
+      response
     end
 
 

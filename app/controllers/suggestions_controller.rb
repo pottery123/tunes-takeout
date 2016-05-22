@@ -6,6 +6,7 @@ class SuggestionsController < ApplicationController
 
 
   def index
+    render :favorites
 
   end
 

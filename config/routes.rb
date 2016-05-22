@@ -4,14 +4,22 @@ Rails.application.routes.draw do
    post "suggestions/combination" => "suggestions#combination"
 
    post "/favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
-   delete "favorites/destroy" => "favorites#destroy"
 
-   delete "favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
+
+   get "favorites/get_my_favs" => "favorites#get_my_favs", as: :get_my_favs
+
+   delete "/favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
+   delete "favorites/destroy" => "favorites#destroy", as: :unfavorite
+
+
 
 
    get "/auth/:provider/callback" => "sessions#create"
    delete "/logout" => "sessions#destroy"
   # delete "/favorites/unfavorite" => "favorite#unfavorite"
+
+
+
    get "/suggestions/search_favorites" => "suggestions#search_favorites", as: :favorites
    #post "suggestions/business_paring" => "suggestions#business_paring"
 
