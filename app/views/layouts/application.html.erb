@@ -16,9 +16,12 @@
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
       <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Top 20",  favorites_path %></li>
+      <li><%= link_to "My Favs",  get_my_favs_path %></li>
       <li><%= link_to "Log In", '/auth/spotify'unless current_user %></li>
       <li><%= link_to "Log Out", logout_path, method: :delete if current_user%></li>
       <li><%= link_to "Sporify Profile", current_user.spotify_profile if current_user %></li>
+
       <%=current_user.inspect%>
     </ul>
   </nav>

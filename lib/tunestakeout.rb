@@ -39,7 +39,14 @@ class TunesTakeOut
 
     def my_favorites(user_id)
       data = HTTParty.get(BASE_URL + "v1/users/#{user_id}/favorites").parsed_response
-      data["suggestions"]
+
+      data["suggestions"].map do |fav_id|
+        data = HTTParty.get(BASE_URL + "/v1/suggestions/#{fav_id}").parsed_response
+        data
+        # 
+        # favorites_by_id(fav_id)
+      end
+
     end
 
 

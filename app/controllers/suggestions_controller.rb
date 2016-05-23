@@ -78,6 +78,7 @@ class SuggestionsController < ApplicationController
       @show_favorites = TunesTakeOut.new.search_favorites
       @show_favorites.each do |id|
         a = TunesTakeOut.new.favorites_by_id(id)["suggestion"]
+        #raise
         if a["music_type"] == "artist"
           @artist = Music.find_artist(a["music_id"])
           @show_favorites_array << @artist
@@ -118,6 +119,10 @@ class SuggestionsController < ApplicationController
       @display_music = dispaly_music
 
     end
+
+
+
+
 end
 
 

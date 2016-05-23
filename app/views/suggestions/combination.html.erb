@@ -1,0 +1,17 @@
+
+
+<% if !@show_favorites_array.nil?%>
+  <%@show_favorites_array.each do |num|%>
+    <%=num.name%><br>
+    <iframe src="https://embed.spotify.com/?uri=<%=  "#{num.uri}" %>"
+    width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+      <%end%>
+<%end%>
+
+
+ <% if !@food_array.nil?%>
+  <%=@food_array.each do |num|%>
+    <%=num.name%><br>
+    <%end%>
+<%end%>
