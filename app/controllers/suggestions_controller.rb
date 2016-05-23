@@ -2,7 +2,7 @@ require 'tunestakeout.rb'
 class SuggestionsController < ApplicationController
 
 
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :search_favorites]
 
 
   def index
@@ -74,32 +74,34 @@ class SuggestionsController < ApplicationController
 
     def search_favorites
       @food_array = []
-      @show_favorites_array = []
+      @music_array = []
+      @id_array = []
       @show_favorites = TunesTakeOut.new.search_favorites
       @show_favorites.each do |id|
         a = TunesTakeOut.new.favorites_by_id(id)["suggestion"]
         #raise
         if a["music_type"] == "artist"
           @artist = Music.find_artist(a["music_id"])
-          @show_favorites_array << @artist
+          @music_array << @artist
         elsif a["music_type"] == "album"
           @album = Music.find_album(a["music_id"])
-          @show_favorites_array << @album
+          @music_array << @album
         else a["music_type"] == "track"
           @track = Music.find_track(a["music_id"])
-          @show_favorites_array << @track
-            @show_food_favorites = TunesTakeOut.new.search_favorites
-            @show_food_favorites.each do |id|
-              b = TunesTakeOut.new.favorites_by_id(id)["suggestion"]
-              @food = Food.find_business(b["food_id"])
+          @music_array << @track
+        end
+              @food = Food.find_business(a["food_id"])
               @food_array << @food
-          end
+              id = a["id"]
+              @id_array << id
+
 
         end
         @food_array
-        @show_favorites_array
-      end
-      render :favorites
+        @music_array
+        @id_array
+
+
     end
 
 

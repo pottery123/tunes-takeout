@@ -6,7 +6,7 @@
 <%#=current_user.uid%>
 
 
-<%if current_user && @music_array && @food_array %>
+<%if @music_array && @food_array %>
 
   <%@music_array.zip(@food_array,@id_array).each do |suggestion|%>
 
@@ -33,6 +33,7 @@
     <%=button_to "Open in Yelp", suggestion[1].url, method: :get, class: "btn btn-danger"%>
   </td>
       <td>
+        <%if !current_user.nil?%>
     <%= form_tag(favorites_favorite_a_suggestion_path, method: :post) do %>
         <%=hidden_field_tag(:user_id, current_user.uid)%>
         <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
@@ -44,28 +45,11 @@
             <%=hidden_field_tag(:user_id, current_user.uid)%>
             <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
             <%= submit_tag("UnFav") %>
+              <%end%>
             <%end%>
           </td>
       </tr>
       </table>
       </div>
   <%end%>
-<%end%>
-
-
-
-<% if !@show_favorites_array.nil?%>
-  <%@show_favorites_array.each do |num|%>
-    <%=num.name%><br>
-    <iframe src="https://embed.spotify.com/?uri=<%=  "#{num.uri}" %>"
-    width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-
-      <%end%>
-<%end%>
-
-
- <% if !@food_array.nil?%>
-  <%=@food_array.each do |num|%>
-    <%=num.name%><br>
-    <%end%>
 <%end%>
