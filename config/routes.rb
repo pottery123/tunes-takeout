@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
    get "favorites/get_my_favs" => "favorites#get_my_favs", as: :get_my_favs
 
-   delete "/favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
+  #  delete "/favorites/favorite_a_suggestion" => "favorites#favorite_a_suggestion"
    delete "favorites/destroy" => "favorites#destroy", as: :unfavorite
 
 
