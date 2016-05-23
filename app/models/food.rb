@@ -1,14 +1,15 @@
 
 class Food
-  attr_reader :name, :image, :rating, :reviews, :rating_image, :address
+  attr_reader :name, :image, :rating, :reviews, :rating_image, :address, :url
 
   def initialize(input)
-    @image = input.business.image_url
-    @name = input.business.name
-    @rating = input.business.rating
-    @reviews = input.business.review_count
+    @image        = input.business.image_url
+    @name         = input.business.name
+    @rating       = input.business.rating
+    @reviews      = input.business.review_count
     @rating_image = input.business.rating_img_url_large
-    @address = input.business.location.display_address
+    @address      = input.business.location.display_address
+    @url          = input.business.url
 
 
     #@business = Yelp.client.business(input)

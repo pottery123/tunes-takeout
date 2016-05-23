@@ -9,30 +9,46 @@
 <%if current_user && @music_array && @food_array %>
 
   <%@music_array.zip(@food_array,@id_array).each do |suggestion|%>
-    <%=suggestion[0].name%><br>
-    <iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion[0].uri}" %>"
-    width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
 
+
+  <div class = "panel panel-primary">
+    <table class = "table" >
+      <tr>
+
+
+            <td>
+    <%=suggestion[0].name%><br>
+      <iframe src="https://embed.spotify.com/?uri=<%=  "#{suggestion[0].uri}" %>"
+      width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+      <%= button_to "Open in spotify", suggestion[0].external_urls["spotify"], method: :get%>
+    </td>
+
+    <td>
     <%=suggestion[1].name%><br>
     <%=image_tag(suggestion[1].image)%><br>
     <%=suggestion[1].rating%><br>
     <%=suggestion[1].reviews%><br>
     <%=image_tag suggestion[1].rating_image%><br>
     <%=suggestion[1].address%><br>
+    <%=button_to "Open in Yelp", suggestion[1].url, method: :get, class: "btn btn-danger"%>
+  </td>
+      <td>
     <%= form_tag(favorites_favorite_a_suggestion_path, method: :post) do %>
         <%=hidden_field_tag(:user_id, current_user.uid)%>
         <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
         <%= submit_tag("Fav") %>
+        <%end%>
 
 <%#params come from forms in the form of a hash. the keys look up params%>
-
-
-        <%= form_tag(unfavorite_path, method: :delete) do %>
+            <%= form_tag(unfavorite_path, method: :delete) do %>
             <%=hidden_field_tag(:user_id, current_user.uid)%>
             <%=hidden_field_tag(:suggestion_id, suggestion[2] )%>
             <%= submit_tag("UnFav") %>
-            <%end%>
-        <%end%>
+
+          </td>
+      </tr>
+      </table>
+      </div>
   <%end%>
 <%end%>
 
@@ -62,4 +78,4 @@
 <%=link_to "favorites",favorites_path%>
 
 <h3></h3>
-<%=link_to "My favorites",get_my_favs_path%>
+<%=link_to "My favorites", get_my_favs_path%>
