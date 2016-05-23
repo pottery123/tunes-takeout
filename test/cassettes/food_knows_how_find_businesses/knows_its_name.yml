@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.yelp.com/v2/business/ohana-seattle-2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - OAuth oauth_consumer_key="YyEMdut41--kJVxTsOnNqA", oauth_nonce="7119ef813d30e9453b6cf0ac9c765b51",
+        oauth_signature="xUMb8aoDjh%2BsoBvJZTQo6I%2Fxycs%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1463974920", oauth_token="1pKD5WOtU89W8rorhjxCO77B_TA7-7nK",
+        oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 May 2016 03:42:01 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da737cca88c889ba3dd98f99d621026c11463974920; expires=Tue, 23-May-17
+        03:42:00 GMT; path=/; domain=.yelp.com; HttpOnly
+      - bse=ee642ab45f3754837f8d95a6f44f2bff; Domain=.yelp.com; Path=/; HttpOnly
+      - yuv=odZyNcMJEK22cStrIA7Hw0yC_qHL_15M6qWAVNfeiWkv9T_osB8qI4Cqf2FJ8eAXW310TSHn0qnly3xB6nU6G2VsDgVD0-3A;
+        Domain=.yelp.com; Max-Age=630720000; Path=/; expires=Sun, 18-May-2036 03:42:01
+        GMT
+      X-Node:
+      - api_com
+      - web111-r10-sfo2
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store, private
+      Expires:
+      - Mon, 23 May 2016 03:42:01 GMT
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Mode:
+      - ro
+      X-Proxied:
+      - extlb7-r10-sfo2
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 2a757ed81f352a37-SEA
+    body:
+      encoding: ASCII-8BIT
+      string: '{"is_claimed": true, "rating": 3.5, "mobile_url": "http://m.yelp.com/biz/ohana-seattle-2?utm_campaign=yelp_api\u0026utm_medium=api_v2_business\u0026utm_source=YyEMdut41--kJVxTsOnNqA",
+        "rating_img_url": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png",
+        "review_count": 631, "name": "Ohana", "rating_img_url_small": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png",
+        "url": "http://www.yelp.com/biz/ohana-seattle-2?utm_campaign=yelp_api\u0026utm_medium=api_v2_business\u0026utm_source=YyEMdut41--kJVxTsOnNqA",
+        "categories": [["Japanese", "japanese"], ["Hawaiian", "hawaiian"], ["Sushi
+        Bars", "sushi"]], "menu_date_updated": 1441961081, "reviews": [{"rating":
+        4, "excerpt": "I come for the vibe, not really the food. With that being said,
+        the SPAM MUSUBI and POKE are still very much worth trying. Both are available
+        on the HH...", "time_created": 1458791054, "rating_image_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+        "rating_image_small_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+        "user": {"image_url": "http://s3-media4.fl.yelpcdn.com/photo/dHgUxrrrDoxA-XrQTPVoEw/ms.jpg",
+        "id": "3r8hRIiEKkmkQjE1xDrU3A", "name": "Jamie L."}, "rating_image_large_url":
+        "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+        "id": "yX_d6Xkqx7km8GtKi1H6HA"}], "phone": "2069569329", "snippet_text": "I
+        come for the vibe, not really the food. With that being said, the SPAM MUSUBI
+        and POKE are still very much worth trying. Both are available on the HH...",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/bdP8-Xy2leqilMajcQW7Fw/ms.jpg",
+        "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/dHgUxrrrDoxA-XrQTPVoEw/ms.jpg",
+        "display_phone": "+1-206-956-9329", "rating_img_url_large": "https://s3-media3.fl.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png",
+        "menu_provider": "single_platform", "id": "ohana-seattle-2", "is_closed":
+        false, "location": {"cross_streets": "Bell St \u0026 Blanchard St", "city":
+        "Seattle", "display_address": ["2207 1st Ave", "Belltown", "Seattle, WA 98121"],
+        "geo_accuracy": 8.0, "neighborhoods": ["Belltown"], "postal_code": "98121",
+        "country_code": "US", "address": ["2207 1st Ave"], "coordinate": {"latitude":
+        47.61265, "longitude": -122.34585}, "state_code": "WA"}}'
+    http_version: 
+  recorded_at: Mon, 23 May 2016 03:42:01 GMT
+recorded_with: VCR 3.0.3
